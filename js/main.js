@@ -8,16 +8,6 @@ let allBars = document.querySelectorAll(".clock");
 let clearBtn = document.querySelector("#clearBtn");
 let locationName = document.querySelector(".location .location");
 
-getWeather("cairo");
-
-async function getWeather(country) {
-  let response = await fetch(
-    `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${country}&days=3`
-  );
-  let result = await response.json();
-  displayWeather(result);
-}
-
 function displayWeather(result) {
   let forecast = result.forecast.forecastday;
   let cartona = "";
@@ -63,7 +53,6 @@ function displayWeather(result) {
       </div>
 `;
   }
-
   cardsContainer.innerHTML = cartona;
   let allCards = document.querySelectorAll(".card");
   for (let i = 0; i < allCards.length; i++) {
@@ -74,7 +63,22 @@ function displayWeather(result) {
       rain(forecast[e.currentTarget.dataset.index].hour);
     });
   }
-  displayImg(result.location.name, result.location.country);
+  // displayImg(result.location.name, result.location.country);
+}
+
+async function getWeather(country) {
+  let response = await fetch(
+    `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${country}&days=5&aqi=no&alerts=no`
+  );
+  let result = await response.json();
+  displayWeather(result);
+  displayImg(
+    result.location.name,
+    result.location.country.toUpperCase(
+      result.location.country.split("").map((el) => el.toUpperCase())
+    )
+  );
+  displayWeather(result);
 }
 
 function rain(weather) {
@@ -126,6 +130,8 @@ async function displayImg(city, country) {
 
   cityData.innerHTML += item;
 }
+
+
 
 function clearRecentCities() {
   cityData.innerHTML = "";
