@@ -6,8 +6,10 @@ let searchBox = document.querySelector("#searchBox");
 let cityData = document.querySelector(".city-items");
 let allBars = document.querySelectorAll(".clock");
 let clearBtn = document.querySelector("#clearBtn");
-
 let locationName = document.querySelector(".location .location");
+
+getWeather("cairo");
+
 async function getWeather(country) {
   let response = await fetch(
     `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${country}&days=3`
@@ -95,7 +97,6 @@ function error() {
   getWeather("cairo");
 }
 
-
 searchBox.addEventListener("keyup", function (e) {
   if (e.key === "Enter") {
     e.preventDefault();
@@ -131,4 +132,3 @@ function clearRecentCities() {
 }
 
 clearBtn.addEventListener("click", clearRecentCities);
-
