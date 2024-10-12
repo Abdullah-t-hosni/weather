@@ -27,7 +27,7 @@
   --switch-circle-pos: 4.13rem;
   --icon-sun: #77757e;
   --icon-moon: #dce3ff;
-  --box-shadow:inset 0 0 10px rgba(54, 53, 53, 0.311);
+  --box-shadow: inset 0 0 10px rgba(54, 53, 53, 0.311);
 }
 :root[data-theme="light"] {
   --bg-color: #fff;
@@ -40,7 +40,6 @@
   --icon-sun: #997f44;
   --icon-moon: #b1b0b5;
   --box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-
 }
 
 #theme-switcher {
@@ -65,7 +64,6 @@
   z-index: 0;
   transform: translateX(var(--switch-circle-pos));
   transition: transform 0.3s;
-  
 }
 #theme-switcher svg {
   z-index: 1;
@@ -119,7 +117,6 @@ body {
   padding: 20px;
   display: flex;
   flex-direction: column;
-
 }
 
 .container header {
@@ -370,8 +367,7 @@ header .search-bar i {
   color: var(--text-color);
 }
 
-
-.city-items{
+.city-items {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
@@ -387,11 +383,10 @@ header .search-bar i {
 .city-items .item .city-image {
   overflow: hidden;
   border-radius: 40px;
-
 }
 
 .city-items .item img {
-  width: 100% ;
+  width: 100%;
   height: 100px;
   transition: scale 0.3s ease;
   transition: filter 0.3s ease;
@@ -410,7 +405,6 @@ header .search-bar i {
   font-weight: 400;
   font-size: 0.8rem;
 }
-
 
 .button {
   background: 0 0;
@@ -489,7 +483,7 @@ header .search-bar i {
 @media screen and (max-width: 1200px) {
   .city-items .item {
     width: 20%;
-  } 
+  }
 
   .city-items .item .city-image {
     width: 100%;
@@ -504,22 +498,60 @@ header .search-bar i {
   }
 
   .city-items .item img {
-    width: 100% ;
+    width: 100%;
     height: auto;
     transition: scale 0.3s ease;
     transition: filter 0.3s ease;
   }
-  
+
   .forecast-cards {
     width: 100%;
     margin-top: 30px;
     margin-bottom: 30px;
     display: flex;
   }
+
+  .forecast-cards .card {
+    width: 100%;
+  }
+
+  .forecast-cards .card .card-header {
+    font-size: 1rem;
+  }
+
+  .card.active .card-body .degree {
+    font-size: 1.5rem;
+  }
+
+  .card.active .card-body img {
+    width: 100px;
+    order: 10;
+  }
+
+  .card.active .card-data {
+    font-size: 1rem;
+  }
+
+  .card .card-header .time {
+    font-size: 1rem;
+  }
+
+  .card .card-body {
+    font-size: 0.8rem;
+  }
+
+  .rain-chance {
+    padding: 10px 10px 10px 20px;
+  }
+
+  .rain-day-hours {
+    height: 100%;
+    padding: 20px 10px;
+    display: flex;
+  }
 }
 
 @media screen and (max-width: 991px) {
-
   .city-items .item {
     width: 15%;
   }
@@ -537,7 +569,7 @@ header .search-bar i {
   }
 
   .city-items .item img {
-    width: 100% ;
+    width: 100%;
     height: auto;
     transition: scale 0.3s ease;
     transition: filter 0.3s ease;
@@ -594,34 +626,104 @@ header .search-bar i {
     width: 100px;
   }
 
+  .forecast {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .rain-chance {
+    gap: 10px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
 
+  .rain-day-hours {
+    height: 100%;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .clock {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  @media screen and (max-width: 767px) {
+    .city-items .item {
+      width: 25%;
+    }
+
+    .city-items .item .city-image {
+      width: 100%;
+    }
+
+    .city-items .item .city-name {
+      font-size: 0.8rem;
+    }
+
+    .city-items .item .city-name span {
+      font-size: 0.6rem;
+    }
+
+    .city-items .item img {
+      width: 100%;
+      height: auto;
+      transition: scale 0.3s ease;
+      transition: filter 0.3s ease;
+    }
+  }
 }
 
+@media screen and (max-width: 575px) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
 
-@media screen and (max-width: 767px) {
+  .location {
+    font-size: 0.8rem;
+  }
+
+  .search-bar {
+    width: 100%;
+    padding: 0px 150px;
+    order: 1;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .search-bar input {
+    font-size: 0.8rem;
+  }
+
+  .search-bar i {
+    font-size: 0.8rem;
+  }
+
+  .forecast {
+    width: 100%;
+    margin: auto;
+  }
 
 
-
-  .city-items .item {
-    width: 25%; 
-  } 
-
-  .city-items .item .city-image {
-    width: 100%;    
-  }   
-
-  .city-items .item .city-name {    
-    font-size: 0.8rem;  
-  }   
-
-  .city-items .item .city-name span {    
-    font-size: 0.6rem;  
-  }   
-
-  .city-items .item img {    
-    width: 100% ;    
-    height: auto;    
-    transition: scale 0.3s ease;    
-    transition: filter 0.3s ease;    
-  }   
 }
