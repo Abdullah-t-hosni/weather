@@ -103,10 +103,20 @@ async function getWeather(country) {
 function rain(weather) {
   for (let i = 0; i < allBars.length; i++) {
     let clock = allBars[i].getAttribute("data-clock");
-    let height = weather[clock].chance_of_rain; 
-    allBars[i].querySelector(".percent").style.height = `${height}%`; 
+    
+    // تحقق من وجود بيانات الطقس لهذا المفتاح
+    if (weather[clock] && weather[clock].chance_of_rain !== undefined) {
+      let height = weather[clock].chance_of_rain; 
+      console.log(`Clock: ${clock}, Chance of Rain: ${height}`); // تسجيل القيم
+      allBars[i].querySelector(".percent").style.height = `${height}%`; 
+    } else {
+      console.warn(`No rain data available for clock: ${clock}`);
+      allBars[i].querySelector(".percent").style.height = `0%`; // أو أي قيمة افتراضية أخرى
+    }
   }
 }
+
+
 
 
 navigator.geolocation.getCurrentPosition(success, error);
@@ -179,6 +189,3 @@ function clearRecentCities() {
 
 
 clearBtn.addEventListener("click", clearRecentCities);
-
-
-

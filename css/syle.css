@@ -1,5 +1,16 @@
 @import url(https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap);
+::-webkit-scrollbar {
+  width: 12px;
+}
 
+::-webkit-scrollbar-track {
+  background: var(--switch-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-color);
+  border-radius: 6px;
+}
 #theme-switcher {
   align-items: center;
   display: flex;
@@ -33,7 +44,7 @@
 }
 
 #theme-switcher {
-  background-color: var(--switch-bg);
+  background-color: var(--snd-bg-color);
   border-radius: 50px;
   gap: 3rem;
   cursor: pointer;
@@ -277,7 +288,6 @@ header .search-bar i {
 }
 
 .forecast-cards .card.active .card-body {
-  padding: 5px 15px;
   flex-direction: row;
   justify-content: space-between;
   gap: 10px;
@@ -329,7 +339,7 @@ header .search-bar i {
 .rain-day-hours .clock .percent {
   width: 100%;
   height: 50%;
-  background-color: var(--main-color);
+  background: var(--main-color);
   border-radius: inherit;
 }
 
@@ -361,11 +371,16 @@ header .search-bar i {
 }
 
 
-
+.city-items{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 10px 0;
+}
 .city-items .item {
-  width: 15%;
+  width: 20%;
   text-align: center;
-  
   border-radius: 40px;
 }
 
@@ -377,7 +392,7 @@ header .search-bar i {
 
 .city-items .item img {
   width: 100% ;
-  height: auto;
+  height: 100px;
   transition: scale 0.3s ease;
   transition: filter 0.3s ease;
 }
@@ -388,10 +403,12 @@ header .search-bar i {
 
 .city-items .item .city-name {
   padding-top: 10px;
+  font-size: 0.5rem;
 }
 
 .city-items .item .city-name span {
-  font-weight: 700;
+  font-weight: 400;
+  font-size: 0.8rem;
 }
 
 
@@ -469,3 +486,142 @@ header .search-bar i {
   padding: 16px 42px;
 }
 
+@media screen and (max-width: 1200px) {
+  .city-items .item {
+    width: 20%;
+  } 
+
+  .city-items .item .city-image {
+    width: 100%;
+  }
+
+  .city-items .item .city-name {
+    font-size: 1rem;
+  }
+
+  .city-items .item .city-name span {
+    font-size: 0.8rem;
+  }
+
+  .city-items .item img {
+    width: 100% ;
+    height: auto;
+    transition: scale 0.3s ease;
+    transition: filter 0.3s ease;
+  }
+  
+  .forecast-cards {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 991px) {
+
+  .city-items .item {
+    width: 15%;
+  }
+
+  .city-items .item .city-image {
+    width: 100%;
+  }
+
+  .city-items .item .city-name {
+    font-size: 1rem;
+  }
+
+  .city-items .item .city-name span {
+    font-size: 0.8rem;
+  }
+
+  .city-items .item img {
+    width: 100% ;
+    height: auto;
+    transition: scale 0.3s ease;
+    transition: filter 0.3s ease;
+  }
+
+  .recent-header button {
+    font-size: 1rem;
+  }
+
+  .recent-header button i {
+    font-size: 1.2rem;
+  }
+
+  .card .card-header .time {
+    font-size: 1rem;
+  }
+
+  .forecast-cards .card .card-header {
+    font-size: 1rem;
+  }
+
+  .card.active .card-body .degree {
+    font-size: 1.5rem;
+  }
+
+  .forecast-cards {
+    gap: 10px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .forecast-cards .card {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+  }
+
+  .forecast-cards .card .card-header {
+    font-size: 1rem;
+  }
+
+  .forecast-cards .card .card-header .time {
+    display: block;
+  }
+
+  .forecast-cards .card .card-body {
+    font-size: 1rem;
+  }
+
+  .card.active .card-body img {
+    width: 100px;
+  }
+
+
+}
+
+
+@media screen and (max-width: 767px) {
+
+
+
+  .city-items .item {
+    width: 25%; 
+  } 
+
+  .city-items .item .city-image {
+    width: 100%;    
+  }   
+
+  .city-items .item .city-name {    
+    font-size: 0.8rem;  
+  }   
+
+  .city-items .item .city-name span {    
+    font-size: 0.6rem;  
+  }   
+
+  .city-items .item img {    
+    width: 100% ;    
+    height: auto;    
+    transition: scale 0.3s ease;    
+    transition: filter 0.3s ease;    
+  }   
+}
