@@ -138,10 +138,9 @@ header .location .city-name {
 
 header .search-bar {
   position: relative;
-  width: 40%;
+  width: 60%;
   box-shadow: var(--box-shadow);
   border-radius: 25px;
-  overflow: hidden;
 }
 
 header .search-bar input {
@@ -690,40 +689,57 @@ header .search-bar i {
 
 @media screen and (max-width: 575px) {
   header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
     flex-wrap: wrap;
-    padding: 10px;
-    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
   }
 
   .location {
-    font-size: 0.8rem;
-  }
+     font-weight: 600;
+     font-size: 1rem;
+    }
+.location p{
+  margin-top: 15px;
+  background-color: var(--snd-bg-color);
+  border-radius: 50px;
+  gap: 3rem;
+   padding: 0.8rem 2rem;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: var(--box-shadow);
+}
+.location i{
+display: none;
+}
 
-  .search-bar {
-    width: 100%;
-    padding: 0px 150px;
+
+  .search-bar  {
     order: 1;
-    margin: auto;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+    width: 100%;
+    box-shadow: var(--box-shadow);
+    margin: auto;
+    margin-bottom: 20px;
   }
 
-  .search-bar input {
-    font-size: 0.8rem;
-  }
-
-  .search-bar i {
-    font-size: 0.8rem;
+  .search-bar #searchBox {
+    width: 100%;
+    border-radius: 50px;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: var(--box-shadow);
   }
 
   .forecast {
     width: 100%;
     margin: auto;
   }
-
+  
+  .forecast-cards .card-data{
+    flex-direction: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    }
 
 }
