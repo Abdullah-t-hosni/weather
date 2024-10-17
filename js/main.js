@@ -4,7 +4,7 @@ let searchBox = document.querySelector("#searchBox");
 let cityData = document.querySelector(".city-items");
 let allBars = document.querySelectorAll(".clock");
 let clearBtn = document.querySelector("#clearBtn");
-let locationName = document.querySelector(".location .location");
+let locationName = document.querySelector(".location .city-image");
 
 // Function to handle theme switching
 (function () {
@@ -27,22 +27,23 @@ function displayWeather(result) {
   const forecast = result.forecast.forecastday;
   let cartona = "";
   const currentHour = new Date().getHours();
+  
   locationName.innerHTML = result.location.name;
 
   forecast.forEach((day, i) => {
     const date = new Date(day.date);
-    const weekDay = date.toLocaleDateString("en-us", { weekday: "long" });
+    const weekDay = date.toLocaleDateString("en-ar", { weekday: "long" });
     const isActive = i === 0 ? "active" : "";
-    const hourData = day.hour[currentHour];
+    const hourData = day.hour[currentHour] || day.hour[0];
 
     cartona += `   
-       <div class="card ${isActive}" data-index=${i}>
+      <div class="card ${isActive}" data-index=${i}>
         <div class="card-header">
           <div class="day">${weekDay}</div>
         </div>
         <div class="card-body">
           <img src="./images/conditions/${day.day.condition.text}.svg" alt="${day.day.condition.text}"/>
-          <div class="degree">${hourData.temp_c}°C</div>
+                   <div class="degree">${hourData.temp_c}°C</div>
         </div>
         <div class="card-data">
           <ul class="left-column">
@@ -54,6 +55,7 @@ function displayWeather(result) {
           <ul class="right-column">
             <li>Sunrise: <span class="sunrise">${day.astro.sunrise}</span></li>
             <li>Sunset: <span class="sunset">${day.astro.sunset}</span></li>
+            <li>Condition: <span class="condition">${day.day.condition.text}</span></li>
           </ul>
         </div>
       </div>
@@ -61,8 +63,10 @@ function displayWeather(result) {
   });
 
   cardsContainer.innerHTML = cartona;
+
   attachCardEvents(forecast);
 }
+
 
 function attachCardEvents(forecast) {
   const allCards = document.querySelectorAll(".card");
@@ -86,13 +90,10 @@ async function getWeather(country) {
     );
     let result = await response.json();
     
-    // عرض الطقس
     displayWeather(result);
     
-    // تحويل اسم الدولة إلى حروف كبيرة
     let countryNameUpper = result.location.country.toUpperCase();
     
-    // عرض الصورة
     displayImg(result.location.name, countryNameUpper);
   } catch (error) {
     console.error("Error fetching weather data:", error);
